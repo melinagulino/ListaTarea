@@ -4,17 +4,11 @@ class Tarea:
         self.__descripcion = descripcion
         self.__completada = False
 
-    def identificador_tarea(self, id):
+    def comprobar_id(self, id):
         return self.__id == id
 
-    def descripcion_tarea(self, descripcion):
+    def comprobar_descripcion(self, descripcion):
         return self.__descripcion == descripcion
-
-    def obtener_id(self):
-        return self.__id
-
-    def obtener_descripcion(self):
-        return self.__descripcion
 
     def marcar_completada(self):
         self.__completada = True
@@ -32,7 +26,9 @@ class GestorTarea:
         self.__lista_tareas.append(nueva_tarea)
 
     def eliminar_tarea(self, id):
-        self.__lista_tareas = [tarea for tarea in self.__lista_tareas if not tarea.identificador_tarea(id)]
+        for tarea in self.__lista_tareas:
+            if  tarea.comprobar_id(id):
+                self.__lista_tareas.remove(tarea)
 
     def marcar_tarea_completada(self, id):
         for tarea in self.__lista_tareas:
