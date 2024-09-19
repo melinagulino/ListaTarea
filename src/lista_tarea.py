@@ -1,24 +1,46 @@
-
 class Tarea:
+    def __init__(self, id, descripcion):
+        self.__id = id
+        self.__descripcion = descripcion
+        self.__completada = False
+
+    def identificador_tarea(self, id):
+        return self.__id == id
+
+    def descripcion_tarea(self, descripcion):
+        return self.__descripcion == descripcion
+
+    def obtener_id(self):
+        return self.__id
+
+    def obtener_descripcion(self):
+        return self.__descripcion
+
+    def marcar_completada(self):
+        self.__completada = True
+
+    def esta_completada(self):
+        return self.__completada
+
+
+class GestorTarea:
     def __init__(self):
         self.__lista_tareas = []
-        self.tareas_completas = []
 
-    def agregar_una_tarea(self, tarea):
-        if tarea in self.__lista_tareas:
-            return False
-        self.__lista_tareas.append(tarea)
-        return True
+    def agregar_tarea(self, id, descripcion):
+        nueva_tarea = Tarea(id, descripcion)
+        self.__lista_tareas.append(nueva_tarea)
 
-    def completar_tarea(self, tarea_completa):
-        if tarea_completa.lower() in [t.lower() for t in self.__lista_tareas]:
-            self.tareas_completas.append(tarea_completa)
-            return True
-        return False
+    def eliminar_tarea(self, id):
+        self.__lista_tareas = [tarea for tarea in self.__lista_tareas if not tarea.identificador_tarea(id)]
 
-    def eliminar_tarea(self, tarea):
-        if tarea in self.__lista_tareas:
-            self.__lista_tareas.remove(tarea)
-            return True
-        return False
+    def marcar_tarea_completada(self, id):
+        for tarea in self.__lista_tareas:
+            if tarea.identificador_tarea(id):
+                tarea.marcar_completada()
+
+    def listar_tareas(self):
+        return self.__lista_tareas
+
+
 
