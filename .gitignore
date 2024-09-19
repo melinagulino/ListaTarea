@@ -1,4 +1,6 @@
 .idea/
 .venv/
 mainwindow_ui.py
-mainwindow_ui.py
+src/mainwindow_ui.py
+src/__pycache__/
+test/__pycache__/
