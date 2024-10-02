@@ -20,3 +20,4 @@ class GestorTarea:
 
     def listar_tareas(self):
         return self.__lista_tareas
+

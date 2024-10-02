@@ -7,6 +7,9 @@ class Tarea:
     def comprobar_id(self, id):
         return self.__id == id
 
+    def get_id(self):
+        return self.__id
+
     def comprobar_descripcion(self, descripcion):
         return self.__descripcion == descripcion
 
